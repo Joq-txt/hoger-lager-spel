@@ -1,0 +1,122 @@
+import java.util.Scanner;
+
+public class Speelkaart {
+	
+	public Speelkaart(String waarde, String soort) {
+		this.waarde = this.getWaardeGetal(waarde);
+		this.soort = this.getSoortGetal(soort);
+	}
+	
+	public Speelkaart(int waarde, int soort) {
+		this.waarde= waarde;
+		this.soort = soort;
+	}
+	
+	public Speelkaart() {
+		this.waarde = (int)(Math.random()*13)+1;
+		this.soort = (int)(Math.random()*4)+1;
+	}
+	
+	public boolean isHogerDan(Speelkaart kaart) {
+		return this.getWaarde()>=kaart.getWaarde();
+	}
+	
+	public boolean isGelijkAan(Speelkaart kaart) {
+		return this.getWaarde() == kaart.getWaarde();
+	}
+	
+	public int getWaardeGetal(String waarde) {
+		switch(waarde) {
+		case "Aas": return 1;
+		case "Twee": return 2;
+		case "Drie": return 3; 
+		case "Vier": return 4; 
+		case "Vijf": return 5; 
+		case "Zes": return 6; 
+		case "Zeven": return 7; 
+		case "Acht": return 8; 
+		case "Negen": return 9; 
+		case "Tien": return 10; 
+		case "Boer": return 11; 
+		case "Dame": return 12; 
+		case "Koning": return 13; 
+		default : return -1;
+		}
+	}
+	
+	public int getSoortGetal(String soort) {
+		switch(soort) {
+		case "Klaveren": return 1;
+		case "Schoppen": return 2;
+		case "Ruiten": return 3;
+		case "Harten": return 4;
+		default : return -1;
+		}
+	}
+	
+	public String getWaardeTekst() {
+		switch(this.getWaarde()) {
+		case 1: return "Aas";
+		case 2: return "Twee";
+		case 3: return "Drie";
+		case 4: return "Vier";
+		case 5: return "Vijf";
+		case 6: return "Zes";
+		case 7: return "Zeven";
+		case 8: return "Acht";
+		case 9: return "Negen";
+		case 10: return "Tien";
+		case 11: return "Boer";
+		case 12: return "Dame";
+		case 13: return "Koning";
+		default: return null;
+		}
+	}
+	
+	public String getSoortTekst() {
+		switch(this.getSoort()) {
+		case 1: return "Klaveren";
+		case 2: return "Schoppen";
+		case 3: return "Ruiten";
+		case 4: return "Harten";
+		default: return null;
+		}
+	}
+	
+	//1 = rood & 2 = zwart
+	public int getKleur() {
+		switch(this.getSoort()) {
+		case 1: 
+		case 2: return 2;
+		case 3: 
+		case 4: return 1;
+		default: return -1;
+		}
+	}
+	
+	public String getKleurTekst() {
+		switch (this.getSoort()) {
+		case 1: 
+		case 2: return "Zwart";
+		case 3: 
+		case 4: return "Rood";
+		default: return null;
+		}
+	}
+	
+	private int waarde;
+	private int soort;
+	
+	public int getWaarde() {
+		return waarde;
+	}
+	public void setWaarde(int waarde) {
+		this.waarde = waarde;
+	}
+	public int getSoort() {
+		return soort;
+	}
+	public void setSoort(int soort) {
+		this.soort = soort;
+	}
+}
