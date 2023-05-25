@@ -1,0 +1,37 @@
+import java.util.Scanner;
+
+public class Main {	
+	public static void main(String[] args) {
+		int teller = 0;
+		Boek boek = new Boek();
+		boek.schud();
+		Speelkaart kaart1 = boek.neemAf();
+		System.out.println(kaart1.getSoortTekst()+" "+kaart1.getWaardeTekst());
+		while (teller<7) {
+			System.out.println("Is de volgende kaart hoger of lager?");
+			Scanner scanner = new Scanner(System.in);
+			String antwoord = scanner.next().toLowerCase();
+			Speelkaart kaart2 = boek.neemAf();	
+			System.out.println(kaart2.getSoortTekst()+" "+kaart2.getWaardeTekst());
+			if (antwoord.equals("hoger")&&kaart2.isHogerDan(kaart1)) {
+				teller++;
+				System.out.println("Proficiat, u hebt gelijk "+teller);
+				
+			}
+			else if (antwoord.equals("hoger")&&kaart1.isHogerDan(kaart2)) {
+				System.out.println("Helaas, fout!");
+				teller = 0;
+			}
+			else if (antwoord.equals("lager")&&kaart1.isHogerDan(kaart2)) {
+				teller++;
+				System.out.println("Proficiat, u hebt gelijk: "+teller);
+				
+			}
+			else {
+				System.out.println("Helaas, fout!");
+				teller = 0;
+			}
+			kaart1 = kaart2;
+		}
+	}
+}
